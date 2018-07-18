@@ -15,7 +15,7 @@ alias hass="ssh root@192.168.1.113 -i /Users/alexgr/hassio/ssh_mac/id_rsa"
 alias hassr="ssh root@lxgreen.duckdns.org -i /Users/alexgr/hassio/ssh_mac/id_rsa"
 
 alias zr="source ~/.zshrc"
-alias zshrc="code ~/.zshrc"
+alias zshrc="code ~/.zshrc ~/.zsh"
 
 alias sim="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
