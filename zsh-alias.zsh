@@ -36,8 +36,9 @@ alias gdif="git diff --name-only HEAD | peco --initial-filter=Fuzzy | xargs git 
 
 # npm
 alias rpl="rm ./package-lock.json"
-alias nrb="npm run build"
+alias nb="npm run build"
 alias nt="npm test"
 alias ns="npm start"
 alias nib="npm i && npm run build"
 alias nis="npm i && npm start"
+alias sz="bundle-phobia"
