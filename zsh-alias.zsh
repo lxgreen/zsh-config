@@ -36,6 +36,7 @@ alias gdif="git diff --name-only HEAD | peco --initial-filter=Fuzzy | xargs git 
 
 # npm
 alias rpl="rm ./package-lock.json"
+alias rmnm="rm -rf ./node_modules && rm ./package-lock.json"
 alias nb="npm run build"
 alias nt="npm test"
 alias ns="npm start"
