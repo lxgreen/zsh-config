@@ -36,10 +36,20 @@ alias gdif="git diff --name-only HEAD | peco --initial-filter=Fuzzy | xargs git 
 
 # npm
 alias rpl="rm ./package-lock.json"
-alias rmnm="rm -rf ./node_modules && rm ./package-lock.json"
+alias rmnm="rm -rf ./node_modules && rm -f ./yarn.lock && rm -f ./package-lock.json"
 alias nb="npm run build"
 alias nt="npm test"
 alias ns="npm start"
+alias nw="npm run watch"
 alias nib="npm i && npm run build"
 alias nis="npm i && npm start"
 alias sz="bundle-phobia"
+alias nin="npm install"
+alias nins="npm install -S"
+alias nind="npm install -D"
+alias ninf="npm install --force"
+alias and_emu="~/Library/Android/sdk/emulator/emulator"
+alias avd='(and_emu -netdelay none -netspeed full -avd Pixel_2_API_28 > $HOME/.android-avd.log &)'
+alias avdw='(and_emu -netdelay none -netspeed full -avd Pixel_2_API_28 -writable-system > $HOME/.android-avd.log &)'
+alias adb="~/Library/Android/sdk/platform-tools/adb"
+alias vm="VBoxManage -q startvm ubuntu"
