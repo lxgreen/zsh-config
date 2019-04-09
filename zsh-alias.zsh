@@ -54,5 +54,6 @@ alias vm="VBoxManage -q startvm ubuntu"
 
 #yarn
 alias yys="yarn && yarn start"
+alias ys="yarn start"
 alias yl="yarn link"
 alias yld="rm -rf ~/.config/yarn/link/"
