@@ -24,6 +24,8 @@ alias gad="git ls-files --modified --others --exclude-standard | peco --initial-
 alias gdif="git diff --name-only HEAD | peco --initial-filter=Fuzzy | xargs git diff HEAD --"
 
 #files
+alias rmf="rm -rf"
+alias nout="> /dev/null 2>&1"
 alias rpl="rm ./package-lock.json"
 alias rmnm="rm -rf ./node_modules && rm -f ./yarn.lock && rm -f ./package-lock.json"
 
@@ -50,7 +52,6 @@ alias and_emu="~/Library/Android/sdk/emulator/emulator"
 alias avd='(and_emu -netdelay none -netspeed full -avd Pixel_2_API_28 > $HOME/.android-avd.log &)'
 alias avdw='(and_emu -netdelay none -netspeed full -avd Pixel_2_API_28 -writable-system > $HOME/.android-avd.log &)'
 alias adb="~/Library/Android/sdk/platform-tools/adb"
-alias vm="VBoxManage -q startvm ubuntu"
 
 #yarn
 alias yys="yarn && yarn start"
