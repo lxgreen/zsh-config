@@ -36,6 +36,7 @@ alias ns="npm start"
 alias nw="npm run watch"
 alias nib="npm i && npm run build"
 alias nis="npm i && npm start"
+alias niw="npm i && npm run watch"
 alias sz="bundle-phobia"
 alias nin="npm install"
 alias nins="npm install -S"
@@ -58,3 +59,6 @@ alias yys="yarn && yarn start"
 alias ys="yarn start"
 alias yl="yarn link"
 alias yld="rm -rf ~/.config/yarn/link/"
+
+#apps
+alias firefox='function _fox(){ (cd /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS && ./firefox -url "$1") }; _fox'
