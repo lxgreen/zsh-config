@@ -59,6 +59,8 @@ alias yys="yarn && yarn start"
 alias ys="yarn start"
 alias yl="yarn link"
 alias yld="rm -rf ~/.config/yarn/link/"
+alias ya="yarn add"
+alias ye="yarn e2e"
 
 #apps
 alias firefox='function _fox(){ (cd /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS && ./firefox -url "$1") }; _fox'
