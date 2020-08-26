@@ -8,7 +8,7 @@ alias hassr="ssh root@lxgreen.duckdns.org -i /Users/alexgr/hassio/ssh_mac/id_rsa
 
 # zsh
 alias zr="source ~/.zshrc"
-alias zshrc="code ~/.zshrc ~/.zsh"
+alias zshrc="nvim ~/.zshrc"
 
 # misc
 alias sim="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
@@ -47,7 +47,7 @@ alias nbpc="npm run build --prefix ./packages/common"
 alias nbpe="npm run build --prefix ./packages/editor"
 alias regpub="npm config set registry https://registry.npmjs.org"
 alias regwix="npm config set registry http://npm.dev.wixpress.com"
-
+alias nr="npm run rebuild"
 #vm
 alias and_emu="~/Library/Android/sdk/emulator/emulator"
 alias avd='(and_emu -netdelay none -netspeed full -avd Pixel_2_API_28 > $HOME/.android-avd.log &)'
@@ -64,3 +64,20 @@ alias ye="yarn e2e"
 
 #apps
 alias firefox='function _fox(){ (cd /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS && ./firefox -url "$1") }; _fox'
+alias ff='firefox&'
+alias vv='open /Applications/MacVim.app'
+alias nn='nvim -S'
+alias mm="mvim"
+alias tt='tmux new -A -s rich-content'
+alias ta='tmux a -t rich-content'
+alias tls='tmux list-sessions'
+alias pw='keepassxc-cli show ~/IDrive-Sync/Documents/keepass/pw.kdbx'
+alias man='batman'
+alias cat='bat'
+
+
+#kitty
+alias kv='kitty +kitten icat'
+alias kd='kitty +kitten diff'
+alias kc='kitty +kitten clipboard'
+alias kp='kitty +kitten clipboard --get-clipboard'
