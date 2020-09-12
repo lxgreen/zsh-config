@@ -1,7 +1,3 @@
-# photography nav
-alias org="cd ~/photography/organize-media"
-alias pro="cd ~/photography/pro-gallery-statics"
-
 # hassio
 alias hass="ssh root@192.168.1.113 -i /Users/alexgr/hassio/ssh_mac/id_rsa"
 alias hassr="ssh root@lxgreen.duckdns.org -i /Users/alexgr/hassio/ssh_mac/id_rsa"
@@ -12,16 +8,6 @@ alias zshrc="nvim ~/.zshrc"
 
 # misc
 alias sim="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
-alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-alias lf="ll | peco"
-alias alp="alias | peco"
-
-# git
-alias gg="gsta && gup"
-alias glogp="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' | peco"
-alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
-alias gad="git ls-files --modified --others --exclude-standard | peco --initial-filter=Fuzzy | xargs git add --"
-alias gdif="git diff --name-only HEAD | peco --initial-filter=Fuzzy | xargs git diff HEAD --"
 
 #files
 alias rmf="rm -rf"
@@ -63,21 +49,19 @@ alias ya="yarn add"
 alias ye="yarn e2e"
 
 #apps
-alias firefox='function _fox(){ (cd /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS && ./firefox -url "$1") }; _fox'
+alias firefox='function _fox(){ (cd /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS && ./firefox -url $1) }; _fox $1'
 alias ff='firefox&'
-alias vv='open /Applications/MacVim.app'
+# alias nvim='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
+# alias nvr='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvr'
 alias nn='nvim -S'
-alias mm="mvim"
 alias tt='tmux new -A -s rich-content'
 alias ta='tmux a -t rich-content'
 alias tls='tmux list-sessions'
 alias pw='keepassxc-cli show ~/IDrive-Sync/Documents/keepass/pw.kdbx'
 alias man='batman'
 alias cat='bat'
-
-
-#kitty
-alias kv='kitty +kitten icat'
-alias kd='kitty +kitten diff'
-alias kc='kitty +kitten clipboard'
-alias kp='kitty +kitten clipboard --get-clipboard'
+alias bi="brew install"
+alias bu="brew uninstall"
+alias bl="brew list"
+alias ev='function _calc(){ node -e "console.log($1)" };_calc $1'
+unalias fd
