@@ -47,6 +47,10 @@ alias yl="yarn link"
 alias yld="rm -rf ~/.config/yarn/link/"
 alias ya="yarn add"
 alias ye="yarn e2e"
+alias yb="yarn build"
+alias yyb="yarn && yarn build"
+alias yaw="yarn add -W"
+alias yt="yarn test"
 
 #apps
 alias firefox='function _fox(){ (cd /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS && ./firefox -url $1) }; _fox $1'
@@ -64,4 +68,8 @@ alias bi="brew install"
 alias bu="brew uninstall"
 alias bl="brew list"
 alias ev='function _calc(){ node -e "console.log($1)" };_calc $1'
+alias rr='ranger --cmd "set show_hidden=true"'
+alias ww='w3m -no-mouse'
+alias -g CL="| xargs wc -l"
+alias ll='exa -lah --git'
 unalias fd
