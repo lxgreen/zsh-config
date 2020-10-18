@@ -72,4 +72,6 @@ alias rr='ranger --cmd "set show_hidden=true"'
 alias ww='w3m -no-mouse'
 alias -g CL="| xargs wc -l"
 alias ll='exa -lah --git'
+alias drk='lux macos dark && lux iterm dark'
+alias lit='lux macos light && lux iterm light'
 unalias fd
