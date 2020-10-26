@@ -4,7 +4,7 @@ alias hassr="ssh root@lxgreen.duckdns.org -i /Users/alexgr/hassio/ssh_mac/id_rsa
 
 # zsh
 alias zr="source ~/.zshrc"
-alias zshrc="nvim ~/.zshrc"
+alias zshrc="nvim ~/.zshrc ~/zsh-config/zsh-alias.zsh"
 
 # misc
 alias sim="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
@@ -53,8 +53,10 @@ alias yaw="yarn add -W"
 alias yt="yarn test"
 
 #apps
-alias firefox='function _fox(){ (cd /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS && ./firefox -url $1) }; _fox $1'
-alias ff='firefox&'
+alias firefox='function _fox(){ (cd /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS && ./firefox $1) }; _fox $1'
+alias firefox_hardened='function _hfox(){ (cd /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS && ./firefox -new-instance -P hardened $1) }; _hfox $1'
+alias ff='firefox NUL &'
+alias fh='firefox_hardened NUL &'
 # alias nvim='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
 # alias nvr='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvr'
 alias nn='nvim -S'
