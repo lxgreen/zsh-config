@@ -41,16 +41,17 @@ alias avdw='(and_emu -netdelay none -netspeed full -avd Pixel_2_API_28 -writable
 alias adb="~/Library/Android/sdk/platform-tools/adb"
 
 #yarn
-alias yys="yarn && yarn start"
-alias ys="yarn start"
-alias yl="yarn link"
+alias yarn="midgard-yarn"
+alias yys="midgard-yarn && midgard-yarn start"
+alias ys="midgard-yarn start"
+alias yl="midgard-yarn link"
 alias yld="rm -rf ~/.config/yarn/link/"
-alias ya="yarn add"
-alias ye="yarn e2e"
-alias yb="yarn build"
-alias yyb="yarn && yarn build"
-alias yaw="yarn add -W"
-alias yt="yarn test"
+alias ya="midgard-yarn add"
+alias ye="midgard-yarn e2e"
+alias yb="midgard-yarn build"
+alias yyb="midgard-yarn && midgard-yarn build"
+alias yaw="midgard-yarn add -W"
+alias yt="midgard-yarn test"
 
 #apps
 alias firefox='function _fox(){ (cd /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS && ./firefox $1) }; _fox $1'
