@@ -75,8 +75,8 @@ alias rr='ranger --cmd "set show_hidden=true"'
 alias ww='w3m -no-mouse'
 alias -g CL="| xargs wc -l"
 alias ll='exa -lah --git'
-alias drk='lux macos dark && lux iterm dark && ./reload_nvim.zsh'
-alias lit='lux macos light && lux iterm light && ./reload_nvim.zsh'
+alias drk='lux iterm dark && ~/zsh-config/reload_nvim.zsh'
+alias lit='lux iterm light && ~/zsh-config/reload_nvim.zsh'
 if [ -n "$(alias fd)" ]; then
   unalias fd
 fi
