@@ -50,7 +50,6 @@ add-zsh-hook chpwd _fnm_autoload_hook &&
 	_fnm_autoload_hook
 
 export TERM="xterm-256color"
-export COLOR_SCHEME="dark"
 export BAT_THEME="Solarized (dark)"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
@@ -76,17 +75,30 @@ fi
 
 eval "$(starship init zsh)"
 
+currenttime=$(date +%H:%M)
+if [[ "$currenttime" > "18:00" ]] || [[ "$currenttime" < "06:00" ]]; then
+    sed -i '' "s/colors:\ \*light/colors: *dark/g" ~/.config/alacritty/alacritty.yml
+    export COLOR_SCHEME="dark"
+    export BAT_THEME="Solarized (dark)"
+    echo dark > $HOME/.config/current_theme
+else
+    sed -i '' "s/colors:\ \*dark/colors: *light/g" ~/.config/alacritty/alacritty.yml
+    export COLOR_SCHEME="light"
+    export BAT_THEME="Solarized (light)"
+    echo light > $HOME/.config/current_theme
+fi
 
-switch_alacritty_theme() {
-  if [ $COLOR_SCHEME = "dark" ]; then
+function switch_alacritty_theme() {
+  local currenttheme=$(cat $HOME/.config/current_theme)
+  if [[ "$currenttheme" = "dark" ]]; then
     sed -i '' "s/colors:\ \*dark/colors: *light/g" ~/.config/alacritty/alacritty.yml
     export COLOR_SCHEME="light"
     echo light > $HOME/.config/current_theme
-    export BAT_THEME="Solarized (dark)"
+    export BAT_THEME="Solarized (light)"
   else
     sed -i '' "s/colors:\ \*light/colors: *dark/g" ~/.config/alacritty/alacritty.yml
     export COLOR_SCHEME="dark"
-    export BAT_THEME="Solarized (light)"
+    export BAT_THEME="Solarized (dark)"
     echo dark > $HOME/.config/current_theme
   fi
   ~/zsh-config/reload_nvim.zsh
