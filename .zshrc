@@ -15,7 +15,6 @@
   antigen bundle psprint/zsh-navigation-tools
   antigen bundle MichaelAquilina/zsh-you-should-use
   antigen bundle zsh-users/zsh-syntax-highlighting
-	antigen bundle pndurette/zsh-lux
   antigen bundle jeffreytse/zsh-vi-mode
   antigen apply
 # fi
@@ -50,6 +49,9 @@ _fnm_autoload_hook() {
 add-zsh-hook chpwd _fnm_autoload_hook &&
 	_fnm_autoload_hook
 
+export TERM="xterm-256color"
+export COLOR_SCHEME="dark"
+export BAT_THEME="Solarized (dark)"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
@@ -72,17 +74,20 @@ if _has fzf + _has fd; then
     export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
-export LUX_ITERM_ALL_LIGHT="SolarizedLight"
-export LUX_ITERM_ALL_DARK="SolarizedDark"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 eval "$(starship init zsh)"
 
-if macos_is_dark; then
-		lux iterm dark
-		export BAT_THEME="Solarized (dark)"
-else
-		lux iterm light
-		export BAT_THEME="Solarized (light)"
-fi
+
+switch_alacritty_theme() {
+  if [ $COLOR_SCHEME = "dark" ]; then
+    sed -i '' "s/colors:\ \*dark/colors: *light/g" ~/.config/alacritty/alacritty.yml
+    export COLOR_SCHEME="light"
+    echo light > $HOME/.config/current_theme
+    export BAT_THEME="Solarized (dark)"
+  else
+    sed -i '' "s/colors:\ \*light/colors: *dark/g" ~/.config/alacritty/alacritty.yml
+    export COLOR_SCHEME="dark"
+    export BAT_THEME="Solarized (light)"
+    echo dark > $HOME/.config/current_theme
+  fi
+  ~/zsh-config/reload_nvim.zsh
+  }

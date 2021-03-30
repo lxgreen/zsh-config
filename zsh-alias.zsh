@@ -1,7 +1,3 @@
-# hassio
-alias hass="ssh root@192.168.1.113 -i /Users/alexgr/hassio/ssh_mac/id_rsa"
-alias hassr="ssh root@lxgreen.duckdns.org -i /Users/alexgr/hassio/ssh_mac/id_rsa"
-
 # zsh
 alias zr="source ~/.zshrc"
 alias zshrc="nvim ~/.zshrc ~/zsh-config/zsh-alias.zsh"
@@ -75,8 +71,8 @@ alias rr='ranger --cmd "set show_hidden=true"'
 alias ww='w3m -no-mouse'
 alias -g CL="| xargs wc -l"
 alias ll='exa -lah --git'
-alias drk='lux iterm dark && ~/zsh-config/reload_nvim.zsh'
-alias lit='lux iterm light && ~/zsh-config/reload_nvim.zsh'
 if [ -n "$(alias fd)" ]; then
   unalias fd
 fi
+alias gmm='gcm && gup && gco - && gm master'
+alias thm='switch_alacritty_theme'
