@@ -30,6 +30,8 @@ find-up() {
 	echo "$path"
 }
 
+eval "$(fnm env)"
+
 FNM_USING_LOCAL_VERSION=0
 
 autoload -U add-zsh-hook
@@ -50,8 +52,8 @@ add-zsh-hook chpwd _fnm_autoload_hook &&
 	_fnm_autoload_hook
 
 export TERM="xterm-256color"
-export BAT_THEME="Solarized (dark)"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
+export BAT_THEME="gruvbox-dark"
+export PATH="$HOME/.cargo/bin:/usr/bin/python:/usr/local/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export EDITOR="nvim"
@@ -66,6 +68,7 @@ _has() {
 
 
 if _has fzf + _has fd; then
+    export FZF_DEFAULT_OPTS="--extended"
     export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
     export FZF_DEFAULT_COMMAND='fd --type f'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -77,29 +80,42 @@ eval "$(starship init zsh)"
 
 currenttime=$(date +%H:%M)
 if [[ "$currenttime" > "18:00" ]] || [[ "$currenttime" < "06:00" ]]; then
-    sed -i '' "s/colors:\ \*light/colors: *dark/g" ~/.config/alacritty/alacritty.yml
+    # sed -i '' "s/colors:\ \*light/colors: *dark/g" ~/.config/alacritty/alacritty.yml
+    alacritty-themes Gruvbox-Dark
     export COLOR_SCHEME="dark"
-    export BAT_THEME="Solarized (dark)"
+    export BAT_THEME="gruvbox-dark"
     echo dark > $HOME/.config/current_theme
 else
-    sed -i '' "s/colors:\ \*dark/colors: *light/g" ~/.config/alacritty/alacritty.yml
+    # sed -i '' "s/colors:\ \*dark/colors: *light/g" ~/.config/alacritty/alacritty.yml
+    alacritty-themes Gruvbox-Light
     export COLOR_SCHEME="light"
-    export BAT_THEME="Solarized (light)"
+    export BAT_THEME="gruvbox-light"
     echo light > $HOME/.config/current_theme
 fi
+# ~/zsh-config/reload_nvim.zsh
+
 
 function switch_alacritty_theme() {
   local currenttheme=$(cat $HOME/.config/current_theme)
   if [[ "$currenttheme" = "dark" ]]; then
-    sed -i '' "s/colors:\ \*dark/colors: *light/g" ~/.config/alacritty/alacritty.yml
+    # sed -i '' "s/colors:\ \*dark/colors: *light/g" ~/.config/alacritty/alacritty.yml
+    alacritty-themes Gruvbox-Light
     export COLOR_SCHEME="light"
     echo light > $HOME/.config/current_theme
-    export BAT_THEME="Solarized (light)"
+    export BAT_THEME="gruvbox-light"
   else
-    sed -i '' "s/colors:\ \*light/colors: *dark/g" ~/.config/alacritty/alacritty.yml
+    # sed -i '' "s/colors:\ \*light/colors: *dark/g" ~/.config/alacritty/alacritty.yml
+    alacritty-themes Gruvbox-Dark
     export COLOR_SCHEME="dark"
-    export BAT_THEME="Solarized (dark)"
+    export BAT_THEME="gruvbox-dark"
     echo dark > $HOME/.config/current_theme
   fi
   ~/zsh-config/reload_nvim.zsh
-  }
+}
+
+zle -N switch_alacritty_theme
+bindkey '^T' switch_alacritty_theme
+
+_zsh_cli_fg() { fg; }
+zle -N _zsh_cli_fg
+bindkey '^Z' _zsh_cli_fg

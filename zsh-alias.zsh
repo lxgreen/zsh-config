@@ -54,9 +54,10 @@ alias firefox='function _fox(){ (cd /Applications/Firefox\ Developer\ Edition.ap
 alias firefox_hardened='function _hfox(){ (cd /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS && ./firefox -new-instance -P hardened $1) }; _hfox $1'
 alias ff='firefox NUL &'
 alias fh='firefox_hardened NUL &'
-# alias nvim='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
-# alias nvr='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvr'
+alias nvim='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
+alias nvr='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvr'
 alias nn='nvim -S'
+alias np='nvim -u ~/pure.vim'
 alias tt='tmux new -A -s rich-content'
 alias ta='tmux a -t rich-content'
 alias tls='tmux list-sessions'
@@ -76,3 +77,4 @@ if [ -n "$(alias fd)" ]; then
 fi
 alias gmm='gcm && gup && gco - && gm master'
 alias thm='switch_alacritty_theme'
+alias ub='ultra --filter "packages/*" --color=false -r build'
