@@ -1,24 +1,5 @@
-# FILE=$HOME/.zsh_config_done
-
-# if [ ! -f "$FILE" ]; then
-  # touch $HOME/.zsh_config_done
-  source ~/dev/zsh-config/antigen.zsh
-  antigen use oh-my-zsh
-  antigen theme minimal
-  antigen bundle fasd
-  antigen bundle git
-  antigen bundle branch
-  antigen bundle colored-man-pages
-  antigen bundle colorize
-  antigen bundle command-not-found
-  antigen bundle common-aliases
-  antigen bundle psprint/zsh-navigation-tools
-  antigen bundle MichaelAquilina/zsh-you-should-use
-  antigen bundle zsh-users/zsh-syntax-highlighting
-  antigen bundle jeffreytse/zsh-vi-mode
-  antigen apply
-# fi
-
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/dev/zsh-config/antigen-plugins.zsh
 
 find-up() {
 	path=$(pwd)
@@ -46,9 +27,9 @@ _fnm_autoload_hook() {
 	fi
 }
 
-add-zsh-hook chpwd _fnm_autoload_hook &&
-	_fnm_autoload_hook
+add-zsh-hook chpwd _fnm_autoload_hook && _fnm_autoload_hook
 
+export ZK_NOTEBOOK_DIR="~/Sync/Notes"
 export TERM="xterm-256color"
 export BAT_THEME="gruvbox-dark"
 export PATH="$HOME/.cargo/bin:/usr/bin/python:/usr/local/opt/ruby/bin:$PATH"
@@ -66,7 +47,7 @@ export LC_MONETARY="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 
 # Returns whether the given command is executable or aliased.
 _has() {
@@ -82,26 +63,6 @@ if _has fzf + _has fd; then
     export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers,changes --color=always {} | head -100'"
     export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
-
-eval "$(starship init zsh)"
-
-alacritty-themes Gruvbox-Dark
-
-
-# currenttime=$(date +%H:%M)
-# if [[ "$currenttime" > "18:00" ]] || [[ "$currenttime" < "06:00" ]]; then
-#     # sed -i '' "s/colors:\ \*light/colors: *dark/g" ~/.config/alacritty/alacritty.yml
-#     alacritty-themes Gruvbox-Dark
-#     export COLOR_SCHEME="dark"
-#     export BAT_THEME="gruvbox-dark"
-#     echo dark > $HOME/.config/current_theme
-# else
-#     # sed -i '' "s/colors:\ \*dark/colors: *light/g" ~/.config/alacritty/alacritty.yml
-#     alacritty-themes Gruvbox-Light
-#     export COLOR_SCHEME="light"
-#     export BAT_THEME="gruvbox-light"
-#     echo light > $HOME/.config/current_theme
-# fi
 
 
 function switch_alacritty_theme() {
@@ -122,16 +83,12 @@ function switch_alacritty_theme() {
   ~/dev/zsh-config/reload_nvim.zsh
 }
 
-zle -N switch_alacritty_theme
-bindkey '^T' switch_alacritty_theme
+# zle -N switch_alacritty_theme
+# bindkey '^T' switch_alacritty_theme
 
 _zsh_cli_fg() { fg; }
 zle -N _zsh_cli_fg
 bindkey '^Z' _zsh_cli_fg
-
-preexec() {
-   print -Pn "\e]0;$1\a"
-}
 
 # caching for telescope repo relies on findutils/glocate
 # https://egeek.me/2020/04/18/enabling-locate-on-osx/
@@ -146,3 +103,9 @@ fi
 alias loaddb="gupdatedb --localpaths=$HOME/dev --output=$HOME/locatedb"
 
 source ~/dev/zsh-config/zsh-alias.zsh
+eval "$(starship init zsh)"
+alacritty-themes Gruvbox-Dark
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
